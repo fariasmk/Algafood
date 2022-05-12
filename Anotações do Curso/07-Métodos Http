@@ -1,0 +1,10 @@
+Get - Método indepotente pois não altera o recurso apenas requisita os recursos
+Post - Cria um novo recurso
+Put - Atualiza um recurso por completo. Pode criar um novo recurso, mas deve ser evitado.
+Patch - Atualiza o recurso parcialmente. Não é seguro.
+Delete - Deleta um recurso.
+Head - Semelhante ao GET mas não retorna um corpo na requisição, somente o cabeçalho.
+Options - Solicita uma lista de métodos em um recurso.
+
+
+

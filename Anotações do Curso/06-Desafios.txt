@@ -1,0 +1,7 @@
+Criar Entidades,
+Fazer mapeamento
+Criar Repositório
+importar Dados
+
+Forma Pagamento
+Permissão

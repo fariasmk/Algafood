@@ -1,0 +1,35 @@
+Olá Thiago,
+
+Nessa aula você aborda conceitos sobre IOC Container, muito bom conteúdo.
+
+Pois bem, minha pergunta se trata da utilização de "MODULOS" do maven e a forma que o SPRING IOC CONTAINER coordena isso, por vezes necessitamos criar aplicações onde exigi-se o particionamento de regras de negócios através de módulos (CORE, WEBSERVICES, BATCHS e etc ...), onde possuímos um pom que agrupa esses módulos.
+
+Nesse caso, onde existem módulos que por sua vez possuem dependências de um ou mais módulos(Webservices -> core, Batchs -> core), IOC Container consegue gerenciar os BEANS sem a necessidade de nenhuma configuração extra?
+
+Pergunto isso pois já vi no GITHUB aplicações com essa estrutura de módulos e caso um módulo precise usar um objeto que consta em outro módulo, os programadores incluírem anotações como @ComponentScan e @Configuration
+
+Poderia me esclarecer essa dúvida, se caso eu desenvolver uma estrutura MODULAR de projeto se preciso acrescentar alguma configuração extra?
+
+
+
+Olá Renato!
+
+De fato, dependendo da configuração dos seus projetos, é necessário adicionar o @ComponentScan para que o Spring detecte os Beans de outros módulos.
+
+Isso se dá porque, por padrão o Spring faz uma varredura a partir do pacote que contém a classe de inicialização (no caso que contém a anotação @SpringBootApplication, pois essa anotação engloba outras, como @Configuration e @ComponentScan).
+
+Como é recomendável definirmos pacotes diferentes para cada módulo maven, a classe que contém a anotação @ComponentScan irá enxergar apenas os componentes do seu próprio módulo.
+
+Ex.: Como você citou, vamos supor que tenhamos 3 módulos: "core", "webservices" e "batches".
+
+1 - O pacote-base do projeto "core" será com.algaworks.core;
+2 - O pacote-base do projeto "webservices" será com.algaworks.webservices;
+3 - O pacote-base do projeto "batches" será com.algaworks.batch.
+
+Todos tem o seu pacote-base (um diferente do outro), porém eles compartilhar uma estrutura igual que é "com.algaworks". Neste caso, podemos adicionar (nos componentes que dependem de outro módulo) uma configuração para escanear os pacotes que queremos. Por exemplo, vamos supor que o "core" depende dos outros:
+
+@SpringBootApplication(scanBasePackages = "com.algaworks")
+
+Dessa forma, a aplicação irá escanear os componentes com base nesse pacote "com.algaworks", o que compreende o que está no projeto "core", "webservices" e "batches".
+
+Obs.: Como a anotação @SpringBootApplication já engloba o @ComponentScan, não precisamos adicioná-la de fato, mas se for um projeto que não contém essa anotação, ai precisaríamos adicionar tanto @Configuration quanto @ComponentSCan.

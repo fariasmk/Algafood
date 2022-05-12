@@ -1,0 +1,18 @@
+Para versões do Intellij >= 2021.2, a opção "compiler.automake.allow.when.app.running" foi movida para "Advanced Settings", mudando somente a 3º etapa, se for de ajuda para alguém segue:
+
+1º Adicionar ao arquivo pom.xml as dependências do DevTools
+
+<dependency>
+	<groupId>org.springframework.boot</groupId>
+	<artifactId>spring-boot-devtools</artifactId>
+	<scope>runtime</scope>
+</dependency>
+
+2º Ativar o build automático, localizado em:
+   - Settings > Build, Execution, Deployment > Compiler
+     - Marcar "Build project automatically"
+3º Permitir o build com a aplicação em execução:
+   - Settings > Advanced Settings
+     - Marcar "Allow auto-make to start even if developed application is currently running"
+
+Link de Referência: https://youtrack.jetbrains.com/issue/IDEA-274903

@@ -1,0 +1,56 @@
+Nota para atualização de versão
+
+Quando é realizada a criação de um projeto Spring através de uma IDE (STS, Visual Studio Code, IntelliJ)
+ou pelo site mostrado no vídeo, são oferecidas como opção as versões mais recentes do Spring, atualmente 2.6.x como versão estável.
+
+Você pode criar o projeto utilizando essa versão, mas durante as próximas aulas, o projeto poderá apresentar problemas não exibidos na aula, devido às atualizações dos pacotes de dependências.
+
+Então, será necessário realizar algumas alterações adicionais, tais alterações necessárias serão apresentadas no conteúdo de apoio das aulas ao decorrer do curso.
+
+Atualizações nesta aula
+
+Caso você não tenha criado o projeto já em uma versão mais recente, é necessário efetuar as alterações a seguir.
+Declaração da biblioteca do JUnit 5
+
+A partir do Spring 2.2.0 o JUnit 5 passou a ser o padrão dos testes. Sendo assim, a importação explícita da dependência, não é necessária nas versões mais recentes. Só é necessário adicionar a dependência spring-boot-starter-test.
+
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-test</artifactId>
+    <scope>test</scope>
+</dependency>
+
+Correção das importações do arquivo de testes AlgafoodApiApplicationTests.java
+
+A versão 5 sofreu diversas alterações nas annotations, tanto nos nomes quanto na localidade (package), a tabela abaixo exibe as diferenças entre as versões:
+JUnit 4	JUnit 5
+org.junit.Test	org.junit.jupiter.api.Test
+org.junit.Before	org.junit.jupiter.api.BeforeEach
+org.junit.After	org.junit.jupiter.api.AfterEach
+org.junit.BeforeClass	org.junit.jupiter.api.BeforeAll
+org.junit.AfterClass	org.junit.jupiter.api.AfterAll
+org.junit.runner.RunWith*	org.junit.jupiter.api.extension.ExtendWith
+
+Nota: A annotation @RunWith foi removida, foi adicionado uma similar a @ExtendWith
+
+
+Atualizando a classe de testes AlgafoodApiApplicationTests.java
+
+Agora vamos atualizar a nossa classe de testes a AlgafoodApiApplicationTests.
+
+Seguindo a tabela de alterações, vamos atualizar os imports de org.junit.Test para import org.junit.Test.
+
+import org.junit.jupiter.api.Test;
+
+
+
+Em seguida remova a annotation @RunWith(SpringRunner.class) e substitua por @ExtendWith(SpringExtension.class).
+
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
+
+@ExtendWith(SpringExtension.class)
+@SpringBootTest
+public class AlgafoodApiApplicationTests {
+   ...
+}

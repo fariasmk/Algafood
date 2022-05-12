@@ -1,0 +1,28 @@
+Podes me dar mais dicas resumidas sobre este container? visto que eu nao entendo bem esta noção de container.
+1) O que é o container
+2) Para que serve
+3) E neste caso do Spring, como sera usado ?
+
+O container do Spring é o responsável por criar, configurar e resolver as dependências entre componentes que existe na sua aplicação.
+
+Basicamente ele faz uma varredura no seu projeto, verifica os componentes definidos através de anotações (por exemplo), valida as dependências de cada um, avalia as configurações (que também podem ser feitas através de anotações) e "monta" esses objetos pra você de acordo com o que foi configurado.
+
+Sempre que você precisar desses objetos, o container irá te fornecer uma instância criada do objeto completo.
+
+O container IoC do Spring é representado pela interface ApplicationContext.
+
+O uso do container é completamente transparente, tudo que precisamos fazer é anotar quem são os componentes, quem depende deles e o resto o Spring faz o serviço.
+
+Ele é chamado de IoC porque ele é um container de inversão de controle, que é o que ele faz, o controle dos objetos geralmente é por conta do desenvolvedor, neste caso o controle é passado para o container, por isso Container IoC (Inversion of Control).
+
+Não usamos diretamente a interface ApplicationContext, isso é um processo que acontece ao subir a aplicação Spring.
+
+Nossas classes e recursos não a implementam. O próprio Spring fornece as implementações desta interface.
+
+A ideia do docker, é que você possa empacotar sua aplicação com todas as dependências que seu projeto precisa pra você rodar em qualquer máquina que possua o docker instalado.
+
+Por exemplo, você pode usar o docker para criar uma imagem de um projeto que precisa do Java 8 e MySQL. Você pode juntar o seu projeto junto com o Java e o MySQL em uma imagem "empacotada" e seu projeto não precisará de nenhuma instalação extra, tudo que você precisa tá ali dentro dessa imagem.
+
+Já os containers IoC servem simplesmente para fazer injeção de dependência, o container IoC que vai saber quando e quem ele deve instanciar, pra onde levar tal objeto, etc.
+
+O Spring cria os objetos para gente (instancia os beans) e onde a gente precisar utilizar esses objetos não precisamos instanciá-los (através do new) basta solicitarmos para o Spring uma instância daquele objeto e ele injeta pra gente.

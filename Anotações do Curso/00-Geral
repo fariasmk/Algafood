@@ -1,0 +1,19 @@
+Anotações Gerais
+
+- mvn package : Gera o arquivo .jar pelo terminal
+
+- mvn clean : Limpa o arquivo .jar pelo terminal
+
+- parent indica de onde vamos herdar as configurações
+
+- O Spring MVC é adicionado ao projeto através do Starter "Web" (spring-boot-starter-web).
+
+- Injeção de Dependência: É uma forma de Inversão de Controle. Exemplo ao enviar notificações, devemos ter umas classe em que podemos definir qual o meio de mensagem, se é email ou sms, e em outras classes definimos  o tipo de notificação. Isso ajuda ao ter que alterar o meio de comunicação.
+
+- Spring IoC Container: Implementação de Injeção de Dependências do Framework.
+
+- Beans são objetos gerenciados pelo container do Spring.
+
+- JPA é uma especificação e o Hibernate é o produto que implementa a especificação JPA.
+
+- Padrão Aggregate do DDD - Grupo de objetos de domínio que podem ser tratados como uma única unidade.

@@ -1,0 +1,16 @@
+200 - OK
+201 - Recurso Criado
+204 - Recurso Criado porém sem Conteúdo no body
+
+301 - Movido permanentemente
+302 - Encontrado
+
+400 - Requisição mal feita
+401 - Não autorizado
+403 - Proibido
+404 - Não encontrado
+405 - Método não permitido
+406 - Não aceito
+
+500 - Erro interno no servidor
+503 - Serviço indisponível
