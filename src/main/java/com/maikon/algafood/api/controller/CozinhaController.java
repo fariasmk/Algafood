@@ -28,6 +28,7 @@ public class CozinhaController {
 
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE) //Não é necessário no Json o produces
     public List<Cozinha> listar() {
+
         return cozinhaRepository.findAll();
     }
 
@@ -36,9 +37,11 @@ public class CozinhaController {
     @GetMapping("/{cozinhaId}")
     public ResponseEntity<Cozinha> buscar(@PathVariable Long cozinhaId) {
         Optional<Cozinha> cozinha = cozinhaRepository.findById(cozinhaId);
+
         if (cozinha.isPresent()) {
             return ResponseEntity.ok(cozinha.get());
         }
+
         return ResponseEntity.notFound().build();
     }
 
