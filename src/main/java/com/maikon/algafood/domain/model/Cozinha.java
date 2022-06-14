@@ -20,8 +20,8 @@ public class Cozinha {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    //    @JsonIgnore
-//    @JsonProperty("titulo") // Muda a Representação no Json
+    // @JsonIgnore
+    //@JsonProperty("titulo") // Muda a Representação no Json
     @Column(nullable = false)
     private String nome;
 
