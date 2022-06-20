@@ -1,0 +1,13 @@
+Alterações nos imports
+
+A versão 5 sofreu diversas alterações nas annotations, tanto nos nomes quanto na localidade (package), a tabela abaixo exibe as diferenças entre as versões:
+JUnit 4                  	JUnit 5
+org.junit.Test	            org.junit.jupiter.api.Test
+org.junit.Before	        org.junit.jupiter.api.BeforeEach
+org.junit.After	            org.junit.jupiter.api.AfterEach
+org.junit.BeforeClass	    org.junit.jupiter.api.BeforeAll
+org.junit.AfterClass	    org.junit.jupiter.api.AfterAll
+org.junit.runner.RunWith*	org.junit.jupiter.api.extension.ExtendWith
+
+Nota: A annotation @RunWith foi removida, foi adicionado uma similar a @ExtendWith
+
